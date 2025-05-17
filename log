@@ -75,3 +75,34 @@ sudoku.c:19:1: error: control reaches end of non-void function [-Werror=return-t
  ^
 cc1.exe: all warnings being treated as errors
 2c3eef2
+Sat, May 17, 2025  2:58:21 PM: 
+ sudoku.c | 14 --------------
+ 1 file changed, 14 deletions(-)
+Compilation failed
+In file included from test.c:5:0:
+sudoku.c: In function 'createNode':
+sudoku.c:11:3: error: conversion to non-scalar type requested
+   Node* n=(Node) malloc(sizeof(Node));
+   ^~~~
+sudoku.c: In function 'copy':
+sudoku.c:18:12: error: incompatible types when returning type 'Node * {aka struct <anonymous> *}' but 'Node {aka struct <anonymous>}' was expected
+     return new;
+            ^~~
+sudoku.c: In function 'get_adj_nodes':
+sudoku.c:112:21: error: incompatible types when initializing type 'Node * {aka struct <anonymous> *}' using type 'Node {aka struct <anonymous>}'
+         Node* new = copy(n);
+                     ^~~~
+sudoku.c: In function 'DFS':
+sudoku.c:150:9: error: variable 'adj' has initializer but incomplete type
+         List adj = get_adj_nodes(current);
+         ^~~~
+sudoku.c:150:14: error: storage size of 'adj' isn't known
+         List adj = get_adj_nodes(current);
+              ^~~
+sudoku.c:150:14: error: unused variable 'adj' [-Werror=unused-variable]
+sudoku.c: In function 'copy':
+sudoku.c:19:1: error: control reaches end of non-void function [-Werror=return-type]
+ }
+ ^
+cc1.exe: all warnings being treated as errors
+f22cc96
