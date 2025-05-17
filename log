@@ -260,3 +260,9 @@ sudoku.c:73:21: error: 'l' undeclared (first use in this function)
                  for(l = 0; l < 3; l++){
                      ^
 59e406b
+Sat, May 17, 2025  3:07:02 PM: 
+ sudoku.c | 1 +
+ 1 file changed, 1 insertion(+)
+ tests:  3|4
+total_score: 20/70
+668cf4d
