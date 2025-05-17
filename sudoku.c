@@ -132,14 +132,14 @@ Node* DFS(Node* initial, int* cont){
     while (!is_empty(stack)){
         current = top(stack);
         pop(stack);
-        (cont)++;
+        (*cont)++;                   // <-- corrección aquí
 
         if (is_final(current)){
             clean(stack);
             return current;
         }
 
-        List adj = get_adj_nodes(current);
+        List* adj = get_adj_nodes(current);  // <-- puntero List*
         Node* node = first(adj);
 
         while (node != NULL){
@@ -150,7 +150,7 @@ Node* DFS(Node* initial, int* cont){
     }
     clean(stack);
     return NULL;
-}
+  }
 
 
 
