@@ -50,7 +50,7 @@ int is_valid(Node* n){
   for(i = 0; i < 9; i++){
     for(k = 1; k <= 9; k++) seen[k] = 0;
       for(j = 0; j < 9; j++){
-        nt val = n->sudo[i][j];
+        int val = n->sudo[i][j];
         if(val == 0) continue;
         if(seen[val]) return 0;
         seen[val] = 1;
