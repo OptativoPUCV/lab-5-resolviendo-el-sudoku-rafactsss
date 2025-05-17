@@ -240,3 +240,23 @@ test.c:7:8: error: '_strdup' defined but not used [-Werror=unused-function]
         ^~~~~~~
 cc1.exe: all warnings being treated as errors
 2733653
+Sat, May 17, 2025  3:05:45 PM: 
+ sudoku.c | 27 +++++++++++++++++++++++++++
+ 1 file changed, 27 insertions(+)
+Compilation failed
+In file included from test.c:5:0:
+sudoku.c: In function 'is_valid':
+sudoku.c:49:9: error: 'i' undeclared (first use in this function)
+     for(i = 0; i < 9; i++){
+         ^
+sudoku.c:49:9: note: each undeclared identifier is reported only once for each function it appears in
+sudoku.c:50:13: error: 'k' undeclared (first use in this function)
+         for(k = 1; k <= 9; k++) seen[k] = 0;
+             ^
+sudoku.c:51:13: error: 'j' undeclared (first use in this function)
+         for(j = 0; j < 9; j++){
+             ^
+sudoku.c:73:21: error: 'l' undeclared (first use in this function)
+                 for(l = 0; l < 3; l++){
+                     ^
+59e406b
