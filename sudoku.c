@@ -44,49 +44,72 @@ void print_node(Node* n){
 }
 
 int is_valid(Node* n){
-    int i, j, k, l;
-    int seen[10];
-    // Revisar filas
-    for(i = 0; i < 9; i++){
-        for(k = 1; k <= 9; k++) seen[k] = 0;
-        for(j = 0; j < 9; j++){
-            int val = n->sudo[i][j];
-            if(val == 0) continue;
-            if(seen[val]) return 0;
-            seen[val] = 1;
-        }
-    }
+  int i, j, k, l;
+  int seen[10];
+  // Revisar filas
+  for(i = 0; i < 9; i++){
+    for(k = 1; k <= 9; k++) seen[k] = 0;
+      for(j = 0; j < 9; j++){
+        nt val = n->sudo[i][j];
+        if(val == 0) continue;
+        if(seen[val]) return 0;
+        seen[val] = 1;
+      }
+  }
     // Revisar columnas
-    for(j = 0; j < 9; j++){
-        for(k = 1; k <= 9; k++) seen[k] = 0;
-        for(i = 0; i < 9; i++){
-          int val = n->sudo[i][j];
-            if(val == 0) continue;
-            if(seen[val]) return 0;
-            seen[val] = 1;
-        }
-    }
+  for(j = 0; j < 9; j++){
+    for(k = 1; k <= 9; k++) seen[k] = 0;
+      for(i = 0; i < 9; i++){
+        int val = n->sudo[i][j];
+        if(val == 0) continue;
+        if(seen[val]) return 0;
+        seen[val] = 1;
+      }
+  }
     // Revisar subcuadrantes 3x3
-    for(i = 0; i < 9; i += 3){
-        for(j = 0; j < 9; j += 3){
-            for(k = 1; k <= 9; k++) seen[k] = 0;
-            for(k = 0; k < 3; k++){
-                for(l = 0; l < 3; l++){
-                 int val = n->sudo[i+k][j+l];
-                    if(val == 0) continue;
-                    if(seen[val]) return 0;
-                    seen[val] = 1;
-                }
-            }
+  for(i = 0; i < 9; i += 3){
+    for(j = 0; j < 9; j += 3){
+      for(k = 1; k <= 9; k++) seen[k] = 0;
+        for(k = 0; k < 3; k++){
+          for(l = 0; l < 3; l++){
+          int val = n->sudo[i+k][j+l];
+          if(val == 0) continue;
+          if(seen[val]) return 0;
+          seen[val] = 1;
+          }
         }
     }
-    return 1;
+  }
+  return 1;
 }
 
 
-List* get_adj_nodes(Node* n){
-    List* list=createList();
-    return list;
+List* get_adj_nodes(Node* n)
+{
+  List* adj_nodes = createList();
+  int i, j;
+
+// Encontrar la primera celda vacía
+for (i = 0; i < 9; i++) {
+    for (j = 0; j < 9; j++) {
+        if (n->sudo[i][j] == 0) {
+        // Probar números del 1 al 9
+          for (int num = 1; num <= 9; num++) {
+            Node* new_node = copy(n);
+            new_node->sudo[i][j] = num;
+
+            // Verificar si el nuevo nodo es válido
+            if (is_valid(new_node)) {
+              pushBack(adj_nodes, new_node);
+            } else {
+                free(new_node);
+            }
+        }
+          return adj_nodes; // Solo generar nodos para la primera celda vacía
+      }
+    }
+  }
+  return adj_nodes;
 }
 
 

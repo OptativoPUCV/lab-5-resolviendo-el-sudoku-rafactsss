@@ -266,3 +266,13 @@ Sat, May 17, 2025  3:07:02 PM:
  tests:  3|4
 total_score: 20/70
 668cf4d
+Sat, May 17, 2025  6:54:50 PM: 
+ sudoku.c | 31 +++++++++++++++++++++++++++----
+ 1 file changed, 27 insertions(+), 4 deletions(-)
+Compilation failed
+In file included from test.c:5:0:
+sudoku.c: In function 'is_valid':
+sudoku.c:53:9: error: unknown type name 'nt'
+         nt val = n->sudo[i][j];
+         ^~
+effbea1
