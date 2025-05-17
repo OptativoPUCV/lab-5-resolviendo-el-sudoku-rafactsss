@@ -307,3 +307,26 @@ sudoku.c:142:14: error: storage size of 'adj' isn't known
 sudoku.c:142:14: error: unused variable 'adj' [-Werror=unused-variable]
 cc1.exe: all warnings being treated as errors
 5e1f6d3
+Sat, May 17, 2025  7:01:52 PM: 
+ sudoku.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+Compilation failed
+In file included from test.c:5:0:
+sudoku.c: In function 'DFS':
+sudoku.c:142:9: error: variable 'adj' has initializer but incomplete type
+         List adj = get_adj_nodes(current);
+         ^~~~
+sudoku.c:142:14: error: storage size of 'adj' isn't known
+         List adj = get_adj_nodes(current);
+              ^~~
+sudoku.c:142:14: error: unused variable 'adj' [-Werror=unused-variable]
+test.c: At top level:
+test.c:245:5: error: redefinition of 'main'
+ int main( int argc, char *argv[] ) {
+     ^~~~
+In file included from test.c:5:0:
+sudoku.c:158:5: note: previous definition of 'main' was here
+ int main( int argc, char *argv[] ){
+     ^~~~
+cc1.exe: all warnings being treated as errors
+699e212
